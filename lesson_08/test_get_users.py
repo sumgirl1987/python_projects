@@ -11,7 +11,7 @@ headers = {
 
 
 def test_get_type_of_response():
-    type_response = requests.get(f'{base_url}/users', headers=headers)
+    type_response = requests.get(f'{base_url}users', headers=headers)
     print(type_response.text)  # Посмотреть, что приходит
     data = type_response.json()  # Получаем словарь из JSON
     print(data.keys())

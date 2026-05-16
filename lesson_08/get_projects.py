@@ -1,12 +1,12 @@
 import requests
 
-base_url = 'https://yougile.com/api-v2'
+base_url = 'https://yougile.com/api-v2/'
 key = 'zequ8LDdJ6u5QV6+IvnYxMgH1KnPbOKI4LuXQCDgl7pz-dGXUVmzQYI9WZCSTqzK'
 
 
 def get_project_by_id_positive():
     headers = {'Authorization': f'Bearer {key}'}
-    response = requests.get(f'{base_url}/projects', headers=headers)
+    response = requests.get(f'{base_url}projects', headers=headers)
 
     print(f"Статус: {response.status_code}")
 

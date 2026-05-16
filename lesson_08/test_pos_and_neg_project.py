@@ -1,6 +1,6 @@
 import requests
 
-base_url = 'https://yougile.com/api-v2'
+base_url = 'https://yougile.com/api-v2/'
 key = ''
 
 # Глобальная переменная для хранения ID
@@ -19,7 +19,7 @@ def test_create_project_positive():
         'users': {'7cf99a30-6c7a-4436-8d43-75999bd10988': 'worker'}
     }
     response = requests.post(
-        f'{base_url}/projects', json=new_company, headers=headers)
+        f'{base_url}projects', json=new_company, headers=headers)
 
     assert response.status_code == 201
     saved_project_id = response.json()['id']
@@ -35,7 +35,7 @@ def test_update_project_positive():
         'title': 'Радуга',
         'users': {'7cf99a30-6c7a-4436-8d43-75999bd10988': 'worker'}
     }
-    response = requests.put(f'{base_url}/projects/{saved_project_id}',
+    response = requests.put(f'{base_url}projects/{saved_project_id}',
                             json=data_body, headers=headers)
     assert response.status_code == 200
     print(f"✅ Проект {saved_project_id} успешно обновлен на 'Радуга'")
@@ -47,7 +47,7 @@ def test_get_project_by_id_positive():
         'Content-Type': 'application/json'
     }
     response = requests.get(
-        f'{base_url}/projects/{saved_project_id}', headers=headers)
+        f'{base_url}projects/{saved_project_id}', headers=headers)
 
     assert response.status_code == 200, (
         f"GET: ожидался 200, получен {response.status_code}"
@@ -64,7 +64,7 @@ def test_create_company_negative_without_auth():
         }
     }
     # Отправляем запрос БЕЗ заголовка Authorization
-    response = requests.post(f'{base_url}/projects', json=new_company)
+    response = requests.post(f'{base_url}projects', json=new_company)
 
     # Проверяем, что вернулась ошибка 401
     assert response.status_code == 401, \
@@ -85,7 +85,7 @@ def test_update_company_negative_invalid_project_id():
             '7cf99a30-6c7a-4436-8d43-75999bd10988': 'worker',
         }
     }
-    response = requests.put(f'{base_url}/projects/{invalid_id}',
+    response = requests.put(f'{base_url}projects/{invalid_id}',
                             json=data_body, headers=headers)
 
     # Проверяем, что вернулась ошибка 404
@@ -100,7 +100,7 @@ def test_get_project_by_id_negative_wrong_method():
     """❌ Негативный тест: PUT не должен работать для получения проекта"""
     headers = {'Authorization': f'Bearer {key}'}
     response = requests.put(
-        f'{base_url}/projects/{saved_project_id}', headers=headers)
+        f'{base_url}projects/{saved_project_id}', headers=headers)
 
     # Ожидаем ошибку, но API возвращает 200 - это БАГ!
     expected_status = 405
