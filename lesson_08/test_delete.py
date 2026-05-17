@@ -1,7 +1,7 @@
 import requests
 
 base_url = 'https://yougile.com/api-v2/'
-key = 'zequ8LDdJ6u5QV6+IvnYxMgH1KnPbOKI4LuXQCDgl7pz-dGXUVmzQYI9WZCSTqzK'
+key = ''
 user_id = '7cf99a30-6c7a-4436-8d43-75999bd10988'
 
 # Список ID проектов для удаления

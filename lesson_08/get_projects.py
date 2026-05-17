@@ -1,7 +1,7 @@
 import requests
 
 base_url = 'https://yougile.com/api-v2/'
-key = 'zequ8LDdJ6u5QV6+IvnYxMgH1KnPbOKI4LuXQCDgl7pz-dGXUVmzQYI9WZCSTqzK'
+key = ''
 
 
 def get_project_by_id_positive():
